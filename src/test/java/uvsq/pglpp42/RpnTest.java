@@ -13,6 +13,13 @@ public class RpnTest {
 		assert(ss.r.operandes.size()==1 && ss.r.operandes.get(0)==4);
 	}
 	
+	@Test(expected=IllegalArgumentException.class)
+	public void testSaisiIncoherente() {
+		SaisieRpn ss=new SaisieRpn();
+		ss.traiterSaisie("nothing");
+		
+	}
+	
 	
 	
 	
