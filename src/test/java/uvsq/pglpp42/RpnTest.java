@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-import uvsq.pglp42.EmptyCommandStack;
+import uvsq.pglpp42.EmptyCommandStack;
 import uvsq.pglpp42.ArithmeticRpnException;
 import uvsq.pglpp42.SaisieRpn;
 
@@ -82,5 +82,7 @@ public class RpnTest {
 		SaisieRpn ss=new SaisieRpn();
 		ss.traiterSaisie("undo");	
 	}
+	
+	
 
 }
