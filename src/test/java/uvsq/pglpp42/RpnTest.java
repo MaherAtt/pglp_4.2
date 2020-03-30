@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import uvsq.pglp42.EmptyCommandStack;
 import uvsq.pglpp42.ArithmeticRpnException;
 import uvsq.pglpp42.SaisieRpn;
 
@@ -74,6 +75,12 @@ public class RpnTest {
 		ss.traiterSaisie("5");
 		ss.traiterSaisie("undo");
 		assert(ss.r.operandes.size()==1 && ss.r.operandes.get(0)==4);
+	}
+	
+	@Test(expected=EmptyCommandStack.class)
+	public void testundoPileVide() {
+		SaisieRpn ss=new SaisieRpn();
+		ss.traiterSaisie("undo");	
 	}
 
 }
