@@ -1,38 +1,49 @@
 package uvsq.pglpp42;
 
 public class OperationCommand implements UndoableCommand {
-  private MoteurRpn r;
+  private MoteurRpn rom;
   private double op1;
   private double op2;
   private char operation;
 
+  /**
+   * constructeur de la commande.
+   * @param mtr moteurRpn
+   * @param operat operateur
+   */
   public OperationCommand(MoteurRpn mtr,char operat) {
     operation = operat;
-    r = mtr;
+    rom = mtr;
   }
   
+  /**
+   * methode execute qui fait l'operation.
+   */
   public void execute() {
     // TODO Auto-generated method stub
-    GestionException.testPileOperation(r.operandes);
-    op2 = r.pop();
-    op1 = r.pop();
+    GestionException.testPileOperation(rom.operandes);
+    op2 = rom.pop();
+    op1 = rom.pop();
     switch (operation) {
-      case '+' : r.push(op1 + op2); 
+      case '+' : rom.push(op1 + op2); 
       break;
-      case '-' : r.push(op1 - op2); 
+      case '-' : rom.push(op1 - op2); 
       break;
-      case '*' : r.push(op1 * op2); 
+      case '*' : rom.push(op1 * op2); 
       break;
-      case '/' : r.push(op1 / op2); 
+      case '/' : rom.push(op1 / op2); 
       break;
       default : break;
     }
   }
 
+  /**
+   * methode undo qui annule la drn operation effectué.
+   */
   public void undo() {
     // TODO Auto-generated method stub
-    r.pop();
-    r.push(op1);
-    r.push(op2);
+    rom.pop();
+    rom.push(op1);
+    rom.push(op2);
   }
 }

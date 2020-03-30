@@ -1,15 +1,22 @@
 package uvsq.pglpp42;
 
 public class UndoCommand implements Command {
-  Interpreteur r;
+  Interpreteur rom;
 
+  /**
+   * constructeur de undoCommand.
+   * @param inter interpteteur
+   */
   public UndoCommand(Interpreteur inter) {
-    r = inter;
+    rom = inter;
   }
 
+  /**
+   * methode execute qui anulle la drn commande executé.
+   */
   public void execute() {
     // TODO Auto-generated method stub
-    r.getLastCmd().undo();
-    r.removeLastCmd();
+    rom.getLastCmd().undo();
+    rom.removeLastCmd();
   }
 }

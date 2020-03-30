@@ -3,12 +3,18 @@ package uvsq.pglpp42;
 import java.util.Scanner;
 
 public class SaisieRpn {
-  protected MoteurRpn r;
+  protected MoteurRpn rom;
 
+  /**
+   * constructeur de saisieRpn.
+   */
   public SaisieRpn() {
-    r = new MoteurRpn();  
+    rom = new MoteurRpn();  
   }
   
+  /**
+   * methode qui boucle et qui demande a l user de saisir.
+   */
   public void saisir() {
     System.out.println("Saisissez :");
     System.out.println("1-Un nombre");
@@ -17,7 +23,7 @@ public class SaisieRpn {
     System.out.println("4-Quit pour quitter");
     Scanner sc = new Scanner(System.in);
     while (true) {
-      r.afficherStack();
+      rom.afficherStack();
       String str = sc.nextLine();
       String[] strs = str.split(" ");
       for (int i = 0;i < strs.length;i++) {
@@ -26,18 +32,22 @@ public class SaisieRpn {
     }
   }
   
+  /**
+   * methode qui traite une saisie de l'user.
+   * @param sais saisie de l'utilisateur
+   */
   public void traiterSaisie(String sais) {
     try {
       double h = Double.parseDouble(sais);
-      r.saveOperande(h);
+      rom.saveOperande(h);
     } catch (Exception e) {
       GestionException.testSaisieOper(sais);
       switch (sais) {
-        case "undo" : r.undo();
+        case "undo" : rom.undo();
         break;
-        case "quit" : r.quit(); 
+        case "quit" : rom.quit(); 
         break;
-        default : r.operation(sais.charAt(0));
+        default : rom.operation(sais.charAt(0));
       }
             
     }
