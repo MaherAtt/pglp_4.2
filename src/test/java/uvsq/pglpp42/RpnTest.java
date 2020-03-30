@@ -38,6 +38,15 @@ public class RpnTest {
 		assert(ss.r.operandes.size()==1 && ss.r.operandes.get(0)==20);		
 	}
 	
+	@Test
+	public void testOperationDiv() {
+		SaisieRpn ss=new SaisieRpn();
+		ss.traiterSaisie("20");
+		ss.traiterSaisie("5");
+		ss.traiterSaisie("/");
+		assert(ss.r.operandes.size()==1 && ss.r.operandes.get(0)==4);		
+	}
+	
 	
 
 }
