@@ -29,37 +29,13 @@ public class RpnTest {
 		assert(ss.r.operandes.size()==1 && ss.r.operandes.get(0)==9);		
 	}
 	
-	@Test(expected=ArithmeticRpnException.class)
-	public void testSaisieOperationNonValid() {
-		SaisieRpn ss=new SaisieRpn();
-		ss.traiterSaisie("4");
-		ss.traiterSaisie("+");
-			
-	}
-	
 	@Test
-	public void testUndo() {
+	public void testOperationMul() {
 		SaisieRpn ss=new SaisieRpn();
 		ss.traiterSaisie("4");
 		ss.traiterSaisie("5");
-		ss.traiterSaisie("undo");
-		assert(ss.r.operandes.size()==1 && ss.r.operandes.get(0)==4);
-	}
-	
-	@Test(expected=EmptyCommandStack.class)
-	public void testundoPileVide() {
-		SaisieRpn ss=new SaisieRpn();
-		ss.traiterSaisie("undo");	
-	}
-	
-	@Test()
-	public void testPlus() {
-		SaisieRpn ss=new SaisieRpn();
-		ss.traiterSaisie("4");
-		ss.traiterSaisie("5");
-		ss.traiterSaisie("+");
-		assert(ss.r.operandes.size()==1 && ss.r.operandes.get(0)==9);
-		
+		ss.traiterSaisie("*");
+		assert(ss.r.operandes.size()==1 && ss.r.operandes.get(0)==20);		
 	}
 	
 	
