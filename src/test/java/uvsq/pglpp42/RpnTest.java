@@ -47,6 +47,15 @@ public class RpnTest {
 		assert(ss.r.operandes.size()==1 && ss.r.operandes.get(0)==4);		
 	}
 	
+	@Test
+	public void testOperationSub() {
+		SaisieRpn ss=new SaisieRpn();
+		ss.traiterSaisie("20");
+		ss.traiterSaisie("5");
+		ss.traiterSaisie("-");
+		assert(ss.r.operandes.size()==1 && ss.r.operandes.get(0)==15);		
+	}
+	
 	
 
 }
